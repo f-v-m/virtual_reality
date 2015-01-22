@@ -57,14 +57,14 @@ public class UDPReceive : MonoBehaviour {
 	private void init()
 	{
 
-		print("UDPSend.init()");
+		//print("UDPSend.init()");
 		
 
 		port = 8051;
 		
 		// status
-		print("Sending to 127.0.0.1 : "+port);
-		print("Test-Sending to this Port: nc -u 127.0.0.1  "+port+"");
+		//print("Sending to 127.0.0.1 : "+port);
+		//print("Test-Sending to this Port: nc -u 127.0.0.1  "+port+"");
 
 		receiveThread = new Thread(
 			new ThreadStart(ReceiveData));

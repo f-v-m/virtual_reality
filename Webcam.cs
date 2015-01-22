@@ -9,13 +9,14 @@ public class Webcam : MonoBehaviour
 	
 	void Start()
 	{
-		WebCamDevice[] devices = WebCamTexture.devices;
+		WebCamDevice[] devices = WebCamTexture.devices;//список камер
 		webcamTexture = new WebCamTexture();
 		foreach(MeshRenderer r in UseWebcamTexture)
 		{
 			r.material.mainTexture = webcamTexture;
 		}
 		renderer.material.mainTexture = webcamTexture;
+		//вибір камери 0 - вбудована, 1 - зовнішня
 		webcamTexture.deviceName = devices[1].name;
 		webcamTexture.Play();
 	}
