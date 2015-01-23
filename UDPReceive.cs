@@ -21,13 +21,13 @@ public class UDPReceive : MonoBehaviour {
 	public int port; 
 	
 	// infos
-	public string lastReceivedUDPPacket="";
-	public string allReceivedUDPPackets=""; // clean up this from time to time!
+//	public string lastReceivedUDPPacket="";
+//	public string allReceivedUDPPackets=""; // clean up this from time to time!
 	public string X="";
 	public string Z="";
-	public string Y="";
+//	public string Y="";
 	public float x;
-	public float y;
+//	public float y;
 	public float z;
 	
 	
@@ -91,18 +91,17 @@ public class UDPReceive : MonoBehaviour {
 				string text = Encoding.UTF8.GetString(data);
 				
 
-				print(">> " + text);
+//				print(">> " + text);
 				
-				lastReceivedUDPPacket=text;
+//				lastReceivedUDPPacket=text;
 				
 				// ....
-				allReceivedUDPPackets=allReceivedUDPPackets+text;
+//				allReceivedUDPPackets=allReceivedUDPPackets+text;
 				X = text.Split(' ')[1];
 				x = Convert.ToSingle(X)/1000;
 				Z = text.Split(' ')[2];
 				z = Convert.ToSingle(Z)/1000;
-				Y = text.Split(' ')[3];
-				y = Convert.ToSingle(Y)/1000;
+
 			}
 			catch (Exception err)
 			{
@@ -114,15 +113,15 @@ public class UDPReceive : MonoBehaviour {
 
 	// getLatestUDPPacket
 	// cleans up the rest
-	public string getLatestUDPPacket()
+/*	public string getLatestUDPPacket()
 	{
 		allReceivedUDPPackets="";
 		return lastReceivedUDPPacket;
 	}
-
+*/
 
 	void Update () {
-		transform.position = new Vector3(x, y, z);	
+		transform.position = new Vector3(x, 2f, z);	
 	}
 			
 
