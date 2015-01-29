@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class KhightInfo : MonoBehaviour {
-	public string name;
+	public string knightName;
 	public int hitpoint;
 	public int lvl;
 	public int experience;

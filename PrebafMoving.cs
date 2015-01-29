@@ -22,7 +22,7 @@ public class PrebafMoving : MonoBehaviour {
 
 		Vector3 ttt = new Vector3 (obj.transform.position.x, obj.transform.position.y-1f, obj.transform.position.z);
 		Particle[] particles = particleEmitter.particles;
-		print (particles.Length);
+//		print (particles.Length);
 		for (int i = 0; i < particles.Length; i++)
 		{
 			particles[i].position = ttt;
