@@ -16,6 +16,8 @@ public class ChangeTexture : MonoBehaviour{
 	}
 	void Update(){
 		transform.LookAt (target);
+
+
 	}
 /*	void OnMouseDown() {
 		RaycastHit hit;
@@ -30,10 +32,11 @@ public class ChangeTexture : MonoBehaviour{
 	void OnMouseDown(){
 		Rigidbody bullet;
 		Transform go;
-		go = (Transform)Instantiate(bulletPrefab, Camera.main.transform.position, Quaternion.identity);
+		go = (Transform)Instantiate(bulletPrefab, Camera.main.transform.position, transform.rotation);
 		bullet = go.gameObject.AddComponent<Rigidbody>();
 		bullet.mass = 2f;
 		bullet.AddForce (-transform.forward*2500);
+		//bullet.transform.Rotate(Vector3.down * Time.deltaTime, Space.World);
 	}
 	
 } 

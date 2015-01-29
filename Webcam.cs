@@ -5,6 +5,7 @@ public class Webcam : MonoBehaviour
 {
 	
 	public MeshRenderer[] UseWebcamTexture;
+	public int WebcamChanger;
 	private WebCamTexture webcamTexture;
 	
 	void Start()
@@ -17,8 +18,9 @@ public class Webcam : MonoBehaviour
 		}
 		renderer.material.mainTexture = webcamTexture;
 		//вибір камери 0 - вбудована, 1 - зовнішня
-		webcamTexture.deviceName = devices[1].name;
+		webcamTexture.deviceName = devices[WebcamChanger].name;
 		webcamTexture.Play();
 	}
+
 
 }
