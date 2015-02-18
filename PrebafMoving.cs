@@ -4,6 +4,7 @@ using System.Collections;
 public class PrebafMoving : MonoBehaviour {
 	GameObject obj;
 
+
 	
 	// Use this for initialization
 	void Start()
@@ -14,6 +15,8 @@ public class PrebafMoving : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
+		if (GameObject.Find("Knight")){
+
 		obj = GameObject.Find ("Knight");
 		if (GameObject.Find ("CrowStorm_Main")) {
 			GameObject fly = GameObject.Find ("CrowStorm_Main");
@@ -31,5 +34,6 @@ public class PrebafMoving : MonoBehaviour {
 
 		particleEmitter.particles = particles;
 
+		}
 	}
 }

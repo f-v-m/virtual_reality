@@ -7,7 +7,7 @@ public class Webcam : MonoBehaviour
 	public MeshRenderer[] UseWebcamTexture;
 	public int WebcamChanger;
 	private WebCamTexture webcamTexture;
-	
+
 	void Start()
 	{
 		WebCamDevice[] devices = WebCamTexture.devices;//список камер

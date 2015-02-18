@@ -6,6 +6,7 @@ public class KhightInfo : MonoBehaviour {
 	public int hitpoint;
 	public int lvl;
 	public int experience;
+	public GameObject destroyEffect;
 
 	public string Name {
 		get {
@@ -49,4 +50,17 @@ public class KhightInfo : MonoBehaviour {
 		Experience = 0;
 	}
 
+	void Update(){
+		GameObject hp = GameObject.Find ("HitpointBar");
+		hp.GetComponent<UISlider> ().value = Hitpoint / 100f;
+		GameObject label = GameObject.Find("Label");
+
+		if (hitpoint <= 0) {
+			hitpoint = 0;
+			Instantiate(destroyEffect, transform.position, Quaternion.identity);
+			Destroy (gameObject);
+		}
+		label.GetComponent<UILabel> ().text = hitpoint.ToString () + "%";
+
+	}
 }

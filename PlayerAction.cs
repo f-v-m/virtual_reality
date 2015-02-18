@@ -10,6 +10,12 @@ public class PlayerAction : MonoBehaviour {
 	Rigidbody bullet;
 	Transform go;
 	public GameObject knight;
+	public GameObject infoPrefab;
+	GameObject info;
+	bool t;
+
+	//Effects list
+	public GameObject[] effectList;
 //_______________________________________________Get/Set
 	public bool Mode {
 		get {
@@ -50,31 +56,51 @@ public class PlayerAction : MonoBehaviour {
 //_______________________________________________
 	// Use this for initialization
 	void Start () {
+		t = false;
+		string[] effectList;
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//True mode. Atack when mouse click
-		if (mode == true) {
-			if (knight.GetComponent<ChangeTexture>().MouseOn){
-				if (Input.GetMouseButtonDown(0)){
-					go = (Transform)Instantiate(bulletPrefab, Camera.main.transform.position, Camera.main.transform.rotation);
-					bullet = go.gameObject.AddComponent<Rigidbody>();
-					bullet.mass = 2f;
-					//Calculating of direction of bullet:
-					Vector3 vector = knight.transform.position - bullet.transform.position;
 
-					bullet.AddForce(vector*600);
+		if (GameObject.Find ("Knight")) {
+						if (mode == true) {
+								if (knight.GetComponent<ChangeTexture> ().MouseOn) {
+										if (Input.GetMouseButtonDown (0)) {
+												Application.ExternalCall ("exportedKnightInfo", knight.GetComponent<KhightInfo> ().knightName, knight.GetComponent<KhightInfo>().Hitpoint);
+												go = (Transform)Instantiate (bulletPrefab, Camera.main.transform.position, Camera.main.transform.rotation);
+												bullet = go.gameObject.AddComponent<Rigidbody> ();
+												bullet.mass = 2f;
+												//Calculating of direction of bullet:
+												Vector3 vector = knight.transform.position - bullet.transform.position;
+
+												bullet.AddForce (vector * 600);
+										}
+								}
+						} else {
+								if (knight.GetComponent<ChangeTexture> ().MouseOn) {
+										if (Input.GetMouseButtonDown (0)) {
+												if (!t) {
+														Vector3 tmp = new Vector3 (knight.transform.position.x + 1f, knight.transform.position.y + 1f, knight.transform.position.z);
+														info = (GameObject)Instantiate (infoPrefab, tmp, knight.transform.rotation);
+														info.transform.position = new Vector3 (knight.transform.position.x + 1f, knight.transform.position.y + 1f, knight.transform.position.z);
+
+														t = true;
+												} else {
+														Destroy (info);
+														t = false;
+												}
+										}
+								}
+						}
+
+						if (t) {
+								info.transform.position = new Vector3 (knight.transform.position.x + 1f, knight.transform.position.y + 1f, knight.transform.position.z);
+						}
+
+
 				}
-			}
-		} else{
-			if (knight.GetComponent<ChangeTexture>().MouseOn){
-				if (Input.GetMouseButtonDown(0)){
-;
-				}
-			}
-		}
 	}
 
 

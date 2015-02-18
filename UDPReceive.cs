@@ -15,12 +15,12 @@ public class UDPReceive : MonoBehaviour {
 	UdpClient client;
 	
 	public int port; 
-
+	
 	public string X="";
 	public string Z="";
 	public float x;
 	public float z;
-		
+	
 	private static void Main()
 	{
 		UDPReceive receiveObj=new UDPReceive();
@@ -37,13 +37,13 @@ public class UDPReceive : MonoBehaviour {
 	{
 		init();
 	}
-
+	
 	// init
 	private void init()
 	{
-
-		port = 8051;
-
+		
+		port = 8052;
+		
 		receiveThread = new Thread(
 			new ThreadStart(ReceiveData));
 		receiveThread.IsBackground = true;
@@ -61,7 +61,7 @@ public class UDPReceive : MonoBehaviour {
 			{
 				IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, 0);
 				byte[] data = client.Receive(ref anyIP);
-
+				
 				string text = Encoding.UTF8.GetString(data);
 				
 				X = text.Split(' ')[1];
@@ -75,12 +75,9 @@ public class UDPReceive : MonoBehaviour {
 			}
 		}
 	}
-
+	
 	void Update () {
 		transform.position = new Vector3(x, 2f, z);	
 	}
-
+	
 }
-
-
-
