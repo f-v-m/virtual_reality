@@ -86,7 +86,7 @@ public class V2Ttest : MonoBehaviour
 				//newTex = Resources.Load(FileName + indexStr) as Texture;
 				string uri = "file:///Users/f_v_m/Downloads/SnowLeopard_Lion_Mountain_Lion_Mavericks_19.01.2015/images/"+FileName + indexStr + ".png";
 				//string uri = "http://192.168.0.134/images/"+FileName + indexStr + ".png";
-				print (uri);
+				//print (uri);
 				WWW www = new WWW(uri);
 				
 				newTex = www.texture as Texture;

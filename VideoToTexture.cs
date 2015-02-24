@@ -20,7 +20,7 @@ public class VideoToTexture : MonoBehaviour
 		{
 
 		}
-	
+
 		movieTexture = www.movie;
 //		print (movieTexture.duration);
 

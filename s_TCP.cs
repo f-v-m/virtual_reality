@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 using System.IO;
 using System.Net.Sockets;
+using System.Text;
 
 public class s_TCP : MonoBehaviour {
 	internal Boolean socketReady = false;
@@ -52,6 +53,16 @@ public class s_TCP : MonoBehaviour {
 						return theReader.ReadSByte ();
 		return a;
 	}
+
+	public string readMessage(){
+
+		return theReader.ReadString ();
+
+
+	}
+
+
+
 	public void closeSocket() { 
 		if (!socketReady) return; 
 		theWriter.Close(); 
@@ -83,8 +94,15 @@ public class s_TCP : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		SByte test = readSocket();
-		print (test);
+		if (theStream.CanRead){
+			byte[] bytes = new byte[mySocket.ReceiveBufferSize];
+			theStream.Read(bytes, 0, (int)mySocket.ReceiveBufferSize);
+			string returndata = Encoding.UTF8.GetString(bytes);
+			print (returndata);
+		}
+		//SByte test = readSocket();
+		//string test = readMessage ();
+		//print (test);
 	}
 
 }
