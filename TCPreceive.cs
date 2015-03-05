@@ -25,7 +25,7 @@ public class TCPreceive : MonoBehaviour {
 			socket = new TcpClient (host, port); 
 			stream = socket.GetStream (); 
 			binWriter = new BinaryWriter (stream);// StreamWriter(theStream); 
-			binReader = new BinaryReader (stream);//StreamReader(theStream); 
+			binReader = new BinaryReader (stream);// StreamReader(theStream); 
 			strReader = new StreamReader (stream);
 			socketReady = true;
 			
@@ -36,16 +36,16 @@ public class TCPreceive : MonoBehaviour {
 		
 	} 
 
-	public void ReceiveData(){
+/*	public void ReceiveData(){
 		socket = new TcpClient (host, port);
 		IPAddress adr = IPAddress.Parse ("127.0.0.1");
 		while (true) {
-			IPEndPoint  t = new IPEndPoint(adr, port);
+			IPEndPoint  t = new3 IPEndPoint(adr, port);
 
 		}
 	
 	
-	}
+	}*/
 
 	public Byte[] readSocket(){
 		byte[] a = null;

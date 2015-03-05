@@ -25,12 +25,12 @@ public class VideoToTexture : MonoBehaviour
 //		print (movieTexture.duration);
 
 		
-		renderer.material.mainTexture = movieTexture;
+		GetComponent<Renderer>().material.mainTexture = movieTexture;
 
-		audio.clip = movieTexture.audioClip;
+		GetComponent<AudioSource>().clip = movieTexture.audioClip;
 		//AudioClip audioClip = movieTexture.audioClip;
 		movieTexture.Play ();
-		audio.Play ();
+		GetComponent<AudioSource>().Play ();
 
 
 	}

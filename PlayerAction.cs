@@ -10,10 +10,10 @@ public class PlayerAction : MonoBehaviour {
 	Rigidbody bullet;
 	Transform go;
 	public GameObject knight;
-	public GameObject infoPrefab;
+	public Transform infoPrefab;
 	GameObject info;
 	bool t;
-
+	public Vector3 creatingPlace;
 	//Effects list
 	public GameObject[] effectList;
 //_______________________________________________Get/Set
@@ -59,6 +59,8 @@ public class PlayerAction : MonoBehaviour {
 		t = false;
 		string[] effectList;
 
+
+
 	}
 	
 	// Update is called once per frame
@@ -82,9 +84,11 @@ public class PlayerAction : MonoBehaviour {
 								if (knight.GetComponent<ChangeTexture> ().MouseOn) {
 										if (Input.GetMouseButtonDown (0)) {
 												if (!t) {
-														Vector3 tmp = new Vector3 (knight.transform.position.x + 1f, knight.transform.position.y + 1f, knight.transform.position.z);
-														info = (GameObject)Instantiate (infoPrefab, tmp, knight.transform.rotation);
-														info.transform.position = new Vector3 (knight.transform.position.x + 1f, knight.transform.position.y + 1f, knight.transform.position.z);
+														//Vector3 tmp = new Vector3 (knight.transform.position.x + 1f, knight.transform.position.y + 1f, knight.transform.position.z);
+
+														//info = (GameObject)Instantiate (infoPrefab, tmp, knight.transform.rotation);
+//							info = (GameObject) Instantiate (infoPrefab) as GameObject;//, creatingPlace, Quaternion.identity);
+														//info.transform.position = new Vector3 (knight.transform.position.x + 1f, knight.transform.position.y + 1f, knight.transform.position.z);
 
 														t = true;
 												} else {
@@ -96,7 +100,7 @@ public class PlayerAction : MonoBehaviour {
 						}
 
 						if (t) {
-								info.transform.position = new Vector3 (knight.transform.position.x + 1f, knight.transform.position.y + 1f, knight.transform.position.z);
+								//info.transform.position = new Vector3 (knight.transform.position.x + 1f, knight.transform.position.y + 1f, knight.transform.position.z);
 						}
 
 

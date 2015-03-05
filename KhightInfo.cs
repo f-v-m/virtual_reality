@@ -52,7 +52,7 @@ public class KhightInfo : MonoBehaviour {
 
 	void Update(){
 		GameObject hp = GameObject.Find ("HitpointBar");
-		hp.GetComponent<UISlider> ().value = Hitpoint / 100f;
+//		hp.GetComponent<UISlider> ().value = Hitpoint / 100f;
 		GameObject label = GameObject.Find("Label");
 
 		if (hitpoint <= 0) {
@@ -60,7 +60,7 @@ public class KhightInfo : MonoBehaviour {
 			Instantiate(destroyEffect, transform.position, Quaternion.identity);
 			Destroy (gameObject);
 		}
-		label.GetComponent<UILabel> ().text = hitpoint.ToString () + "%";
+//		label.GetComponent<UILabel> ().text = hitpoint.ToString () + "%";
 
 	}
 }

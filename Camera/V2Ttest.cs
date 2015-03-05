@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 
 // Universal Video Texture Lite Ver. 1.1
@@ -11,7 +12,7 @@ public class V2Ttest : MonoBehaviour
 	public int firstFrame;
 	public int lastFrame;
 	
-	public string FileName = "VidTex";
+	public string FileName;
 	public string digitsFormat = "0000";
 	
 	public enum digitsLocation {Prefix, Postfix};
@@ -57,8 +58,25 @@ public class V2Ttest : MonoBehaviour
 	
 	void Start ()
 	{	
+		//час початку запису відео камерою
+		WWW start = new WWW ("file:///Users/f_v_m/Downloads/start_time.txt");
+		while (!start.isDone) {
+				}
+		print (start.text);
+		FileName = start.text.Substring(0, 10);
+		//Destroy (start);
+
+
+		//поточний час
+		var epoch = (DateTime.UtcNow - new DateTime (1970, 1, 1)).TotalSeconds;
+		print ("current " + Math.Round(epoch));
+		//затримка в фреймах
+		int delay = 100;
+		//обрахування номеру першого фрейму
+		firstFrame = Convert.ToInt32((Math.Round(epoch) - double.Parse (FileName))*25 - delay);
+		//firstFrame = 50;
+		print ("ff " + firstFrame);
 		index = firstFrame;
-		
 
 	}
 	
@@ -66,7 +84,6 @@ public class V2Ttest : MonoBehaviour
 	void Update () 
 	{
 		// Forces audio sync on first play (helpful for some devices)
-		
 
 		
 		index += FPS * Time.deltaTime;
@@ -81,38 +98,30 @@ public class V2Ttest : MonoBehaviour
 			
 			indexStr = string.Format("{0:" + digitsFormat + "}", intIndex); 
 			
-			if (DigitsLocation == digitsLocation.Postfix){
+
 				Destroy(newTex);
-				//newTex = Resources.Load(FileName + indexStr) as Texture;
-				string uri = "file:///Users/f_v_m/Downloads/SnowLeopard_Lion_Mountain_Lion_Mavericks_19.01.2015/images/"+FileName + indexStr + ".png";
-				//string uri = "http://192.168.0.134/images/"+FileName + indexStr + ".png";
-				//print (uri);
-				WWW www = new WWW(uri);
+
+				string uri = "file:///Users/f_v_m/Downloads/images/"+FileName + "_" + indexStr + ".jpeg";
+
 				
+
+				WWW www = new WWW(uri);
+				while(!www.isDone){}
 				newTex = www.texture as Texture;
 				
-			}
-			else {
-				newTex = Resources.Load(indexStr + FileName) as Texture;
-			}
-			renderer.material.mainTexture = newTex;
+			
+
+			GetComponent<Renderer>().material.mainTexture = newTex;
 			lastIndex = intIndex;
 		}
 		
-		
-		
-		
+
+
+
+		//DateTime epochStart = new DateTime(1970, 1, 1, 8, 0, 0, System.DateTimeKind.Utc);
+		//print (Math.Round(epoch));
+
 	}
 	
-/*	void OnGUI()
-	{
-		if (enableReplay && showInstructions)
-			GUI.Box(new Rect(0, 0, Screen.width, Screen.height),"Click the left mouse button or touch the screen to rewind & replay");
-		if (intIndex <= lastFrame)
-			GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height),newTex,ScaleMode.ScaleToFit,true,aspectRatio); // Actual video texture draw
-		
-	}*/
+
 }
-
-// Class for audio management
-

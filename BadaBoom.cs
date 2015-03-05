@@ -19,7 +19,7 @@ public class BadaBoom : MonoBehaviour {
 		GameObject knight = collision.gameObject;
 		rotation = Quaternion.Euler (0f, 0f, 0f);
 		instantiatedExplosion = Instantiate( Camera.main.GetComponent<PlayerAction>().ExplosionEffect, contact.point, rotation ) as GameObject;
-		audio.PlayOneShot (sound);
+		GetComponent<AudioSource>().PlayOneShot (sound);
 		//GameObject knight = GameObject.Find("Knight");
 		//deal damage:
 		if (Camera.main.GetComponent<PlayerAction>().ExplosionEffect.name == "CrowstormEffect") {

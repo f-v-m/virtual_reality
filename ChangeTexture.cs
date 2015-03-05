@@ -18,12 +18,12 @@ public class ChangeTexture : MonoBehaviour{
 	}
 	
 	void OnMouseExit(){
-		renderer.material.mainTexture = TextureOver; 
+		GetComponent<Renderer>().material.mainTexture = TextureOver; 
 		mouseOn = false;
 	}
 
 	void OnMouseOver(){ 
-		renderer.material.mainTexture = TextureInit; 
+		GetComponent<Renderer>().material.mainTexture = TextureInit; 
 		mouseOn = true;
 	}
 

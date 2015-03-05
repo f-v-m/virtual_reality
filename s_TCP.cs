@@ -38,27 +38,18 @@ public class s_TCP : MonoBehaviour {
 		theWriter.Flush(); 
 	} 
 
-/*	public String readSocket() { 
-		if (!socketReady) 
-			return ""; 
-		if (theStream.DataAvailable) 
-			return theReader.ReadLine(); 
-		return ""; 
-	} */
+
 	public SByte readSocket(){
 		sbyte a = 00;
 		if (!socketReady)
 			return a;
 		if (theStream.DataAvailable)
-						return theReader.ReadSByte ();
+			return theReader.ReadSByte ();
 		return a;
 	}
 
 	public string readMessage(){
-
 		return theReader.ReadString ();
-
-
 	}
 
 
@@ -99,10 +90,11 @@ public class s_TCP : MonoBehaviour {
 			theStream.Read(bytes, 0, (int)mySocket.ReceiveBufferSize);
 			string returndata = Encoding.UTF8.GetString(bytes);
 			print (returndata);
+			//print(DateTime.UtcNow);
 		}
-		//SByte test = readSocket();
-		//string test = readMessage ();
-		//print (test);
+
 	}
+
+
 
 }
